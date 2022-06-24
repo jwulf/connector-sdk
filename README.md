@@ -13,7 +13,7 @@ public class MyConnectorFunction implements ConnectorFunction {
   @Override
   public Object service(ConnectorContext context) {
 
-    final var request = context.getVariableAsType(MyConnectorRequest.class);
+    final var request = context.getVariablesAsType(MyConnectorRequest.class);
     final var validator = new Validator();
     request.validate(validator);
     validator.validate();
