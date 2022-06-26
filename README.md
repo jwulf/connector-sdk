@@ -7,7 +7,7 @@ The foundation for re-usable connector functionality. With wrappers for common d
 
 ```java
 public class MyConnectorFunction implements ConnectorFunction {
-  private static final Logger LOGGER 
+  private static final Logger LOGGER
       = LoggerFactory.getLogger(MyConnectorFunction.class);
 
   @Override
@@ -22,7 +22,7 @@ public class MyConnectorFunction implements ConnectorFunction {
 
     try {
       var name = request.getCaller();
-      
+
       return new MyConnectorResponse("Pong to " + caller);
     } catch (final Exception e) {
       LOGGER.error("Failed to execute request: " + e.getMessage(), e);
