@@ -1,19 +1,16 @@
 package io.camunda.connector.sdk.gcp;
 
-import java.io.IOException;
-import java.util.Optional;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.google.cloud.functions.HttpRequest;
 import com.google.cloud.functions.HttpResponse;
 import com.google.gson.Gson;
-
 import io.camunda.connector.sdk.common.ConnectorContext;
 import io.camunda.connector.sdk.common.ConnectorFunction;
 import io.camunda.connector.sdk.common.ConnectorInputException;
 import io.camunda.connector.sdk.common.SecretStore;
+import java.io.IOException;
+import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class GCPWrapper {
 
@@ -27,7 +24,8 @@ public class GCPWrapper {
     this.connectorFunction = connectorFunction;
   }
 
-  public void service(final HttpRequest httpRequest, final HttpResponse httpResponse) throws Exception {
+  public void service(final HttpRequest httpRequest, final HttpResponse httpResponse)
+      throws Exception {
 
     final ConnectorBridgeResponse response = new ConnectorBridgeResponse();
 
@@ -36,7 +34,10 @@ public class GCPWrapper {
     if (clusterId.isEmpty()) {
       httpResponse.setStatusCode(400);
       httpResponse.setContentType("text/plain");
-      httpResponse.getWriter().append("No cluster id found at request header ").append(REQUEST_HEADER_CLUSTER_ID);
+      httpResponse
+          .getWriter()
+          .append("No cluster id found at request header ")
+          .append(REQUEST_HEADER_CLUSTER_ID);
       return;
     }
 
@@ -45,7 +46,7 @@ public class GCPWrapper {
     Gson gson = connectorFunction.getGson();
 
     try {
-      Object result = connectorFunction.service(new GCPInput(httpRequest, gson));
+      Object result = connectorFunction.execute(new GCPInput(httpRequest, gson));
 
       response.setResult(result);
       httpResponse.setStatusCode(200);

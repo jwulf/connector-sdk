@@ -24,6 +24,7 @@
     <version.sendGrid>4.9.2</version.sendGrid>
     <version.slack>1.23.0</version.slack>
     <version.kotlin>1.7.0</version.kotlin>
+    <version.zeebe>8.0.3</version.zeebe>
 
     <plugin.version.function-maven-plugin>0.10.0</plugin.version.function-maven-plugin>
     <plugin.version.maven-clean-plugin>3.2.0</plugin.version.maven-clean-plugin>
@@ -54,7 +55,7 @@
     <dependency>
       <groupId>io.camunda</groupId>
       <artifactId>zeebe-client-java</artifactId>
-      <version>8.0.3</version>
+      <version>${version.zeebe}</version>
     </dependency>
 
     <dependency>
@@ -84,11 +85,6 @@
       <version>${version.bcprov-jdk15on}</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpcore</artifactId>
-      <version>${version.httpcore}</version>
-    </dependency>
-    <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-stdlib</artifactId>
       <version>${version.kotlin}</version>
@@ -109,11 +105,6 @@
     <dependency>
       <groupId>com.google.cloud</groupId>
       <artifactId>google-cloud-secretmanager</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>com.google.code.gson</groupId>
-      <artifactId>gson</artifactId>
     </dependency>
 
     <dependency>
@@ -232,7 +223,9 @@
         <version>${plugin.version.maven-enforcer-plugin}</version>
         <configuration>
           <rules>
-            <dependencyConvergence />
+            <!--
+              <dependencyConvergence />
+            -->
             <requirePluginVersion />
           </rules>
         </configuration>
