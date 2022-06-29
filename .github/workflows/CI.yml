@@ -20,4 +20,4 @@ jobs:
         java-version: ${{ matrix.java-version }}
         cache: 'maven'
     - name: Build
-      run: mvn install spotless:check test
+      run: mvn install
