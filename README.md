@@ -1,3 +1,5 @@
+> [This is a prototype](https://github.com/camunda/cloud-connectors/issues/36#issuecomment-1170444587) and subject to breaking changes. Use at your own risk!
+
 # Camunda Connectors Framework
 
 [![CI](https://github.com/camunda/connectors-framework/actions/workflows/CI.yml/badge.svg)](https://github.com/camunda/connectors-framework/actions/workflows/CI.yml)
