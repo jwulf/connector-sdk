@@ -14,7 +14,6 @@
   </properties>
 
   <modules>
-    <module>connector-runtime-cloud</module>
     <module>connector-runtime-job-worker</module>
     <module>connector-sdk</module>
   </modules>
