@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/camunda/connectors-framework/actions/workflows/CI.yml/badge.svg)](https://github.com/camunda/connectors-framework/actions/workflows/CI.yml)
 
-Libraries that support the Camunda connectors framework including an [SDK](#create-a-connector) and [run-times](#connector-run-times).
+[Connector SDK](#create-a-connector) and [run-times](#connector-run-times).
 
 
 ## Creating a Connector
