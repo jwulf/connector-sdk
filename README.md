@@ -2,7 +2,54 @@
 
 [![CI](https://github.com/camunda/connectors-framework/actions/workflows/CI.yml/badge.svg)](https://github.com/camunda/connectors-framework/actions/workflows/CI.yml)
 
-Libraries that support the Camunda connectors framework, including run-times and the [connector SDK](./connector-sdk).
+Libraries that support the Camunda connectors framework including an [SDK](#create-a-connector) and [run-times](#connector-run-times).
+
+
+## Creating a Connector
+
+Include the [connector SDK](./connector-sdk) via maven: 
+
+```xml
+<dependency>
+  <groupId>io.camunda.connectors</groupId>
+  <artifactId>connector-sdk</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+</dependency>
+```
+
+Define your connector logic through the [`ConnectorFunction`](https://github.com/camunda/connectors-framework/blob/main/connector-sdk/src/main/java/io/camunda/connector/sdk/ConnectorFunction.java) interface:
+
+```java
+public class PingConnector implements ConnectorFunction {
+
+  @Override
+  public Object execute(ConnectorContext context) {
+
+    final var request = context.getVariablesAsType(PingRequest.class);
+
+    final var validator = new Validator();
+    request.validate(validator);
+    validator.validate();
+
+    request.replaceSecrets(context.getSecretStore());
+
+    try {
+      var name = request.getCaller();
+
+      return new PingResponse("Pong to " + caller);
+    } catch (final Exception e) {
+      throw ConnectorResponse.failed(e);
+    }
+  }
+}
+```
+
+Expose your connector as a [`ConnectorFunction` SPI implementation](https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html).
+
+## Connector Run-Times
+
+Run your connector as a [job worker](https://github.com/camunda/connectors-framework/tree/main/connector-runtime-job-worker#readme) or build your own run-time based on your environment.
+
 
 ## Build
 
