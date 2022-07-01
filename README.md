@@ -40,7 +40,7 @@ public class PingConnector implements ConnectorFunction {
 
       return new PingResponse("Pong to " + caller);
     } catch (final Exception e) {
-      throw ConnectorResponse.failed(e);
+      throw new ConnectorFailedException(e);
     }
   }
 }
