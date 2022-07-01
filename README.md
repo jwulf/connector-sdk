@@ -1,8 +1,8 @@
 > [This is a prototype](https://github.com/camunda/cloud-connectors/issues/36#issuecomment-1170444587) and subject to breaking changes. Use at your own risk!
 
-# Camunda Connectors Framework
+# Camunda Connector Framework
 
-[![CI](https://github.com/camunda/connectors-framework/actions/workflows/CI.yml/badge.svg)](https://github.com/camunda/connectors-framework/actions/workflows/CI.yml)
+[![CI](https://github.com/camunda/connector-framework/actions/workflows/CI.yml/badge.svg)](https://github.com/camunda/connector-framework/actions/workflows/CI.yml)
 
 [Connector SDK](#create-a-connector) and [run-times](#connector-run-times).
 
