@@ -25,7 +25,7 @@ Define your connector logic through the [`ConnectorFunction`](https://github.com
 public class PingConnector implements ConnectorFunction {
 
   @Override
-  public Object execute(ConnectorContext context) {
+  public Object execute(ConnectorContext context) throws Exception {
 
     var request = context.getVariablesAsType(PingRequest.class);
 
@@ -34,14 +34,10 @@ public class PingConnector implements ConnectorFunction {
     validator.validate();
 
     request.replaceSecrets(context.getSecretStore());
+    
+    var name = request.getCaller();
 
-    try {
-      var name = request.getCaller();
-
-      return new PingResponse("Pong to " + caller);
-    } catch (Exception e) {
-      throw new ConnectorFailedException(e);
-    }
+    return new PingResponse("Pong to " + caller);
   }
 }
 ```
