@@ -4,10 +4,10 @@
 
 [![CI](https://github.com/camunda/connector-framework/actions/workflows/CI.yml/badge.svg)](https://github.com/camunda/connector-framework/actions/workflows/CI.yml)
 
-[Connector Core](#create-a-connector) and [run-times](#connector-run-times).
+[Connector Core](#create-a-connector) and [run-times](#start-a-connector).
 
 
-## Creating a Connector
+## Create a Connector
 
 Include the [connector core](./core) via maven: 
 
@@ -44,9 +44,10 @@ public class PingConnector implements ConnectorFunction {
 
 Expose your connector as a [`ConnectorFunction` SPI implementation](https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html).
 
-## Connector Run-Times
 
-Run your connector as a [job worker](https://github.com/camunda/connectors-framework/tree/main/runtime-job-worker#readme) or build your own run-time based on your environment.
+## Start a Connector
+
+Spin up your connector as a [job worker](https://github.com/camunda/connectors-framework/tree/main/runtime-job-worker#readme) or build your own run-time, tailored towards your environment.
 
 
 ## Build
