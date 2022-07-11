@@ -4,22 +4,22 @@
 
 [![CI](https://github.com/camunda/connector-framework/actions/workflows/CI.yml/badge.svg)](https://github.com/camunda/connector-framework/actions/workflows/CI.yml)
 
-[Connector SDK](#create-a-connector) and [run-times](#connector-run-times).
+[Connector Core](#create-a-connector) and [run-times](#connector-run-times).
 
 
 ## Creating a Connector
 
-Include the [connector SDK](./connector-sdk) via maven: 
+Include the [connector core](./core) via maven: 
 
 ```xml
 <dependency>
   <groupId>io.camunda.connectors</groupId>
-  <artifactId>connector-sdk</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <artifactId>connector-core</artifactId>
+  <version>0.1.0-SNAPSHOT</version>
 </dependency>
 ```
 
-Define your connector logic through the [`ConnectorFunction`](https://github.com/camunda/connectors-framework/blob/main/connector-sdk/src/main/java/io/camunda/connector/sdk/ConnectorFunction.java) interface:
+Define your connector logic through the [`ConnectorFunction`](https://github.com/camunda/connectors-framework/blob/main/core/src/main/java/io/camunda/connector/api/ConnectorFunction.java) interface:
 
 ```java
 public class PingConnector implements ConnectorFunction {
@@ -46,7 +46,7 @@ Expose your connector as a [`ConnectorFunction` SPI implementation](https://docs
 
 ## Connector Run-Times
 
-Run your connector as a [job worker](https://github.com/camunda/connectors-framework/tree/main/connector-runtime-job-worker#readme) or build your own run-time based on your environment.
+Run your connector as a [job worker](https://github.com/camunda/connectors-framework/tree/main/runtime-job-worker#readme) or build your own run-time based on your environment.
 
 
 ## Build

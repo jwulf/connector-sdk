@@ -2,19 +2,29 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.camunda.connectors</groupId>
-  <artifactId>parent</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <parent>
+    <groupId>io.camunda.connector</groupId>
+    <artifactId>connector-parent</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <relativePath>parent/pom.xml</relativePath>
+  </parent>
+
+  <artifactId>connector-root</artifactId>
   <packaging>pom</packaging>
 
-  <name>Camunda Connectors Parent</name>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+  <name>Camunda Connector Root</name>
 
   <modules>
-    <module>connector-runtime-job-worker</module>
-    <module>connector-sdk</module>
+    <module>parent</module>
+    <module>core</module>
+    <module>runtime-job-worker</module>
   </modules>
+
+  <scm>
+    <connection>scm:git:https://${env.GITHUB_TOKEN_USR}:${env.GITHUB_TOKEN_PSW}@github.com/camunda/connector-framework.git</connection>
+    <developerConnection>scm:git:https://${env.GITHUB_TOKEN_USR}:${env.GITHUB_TOKEN_PSW}@github.com/camunda/connector-framework.git</developerConnection>
+    <tag>HEAD</tag>
+    <url>https://github.com/camunda/connector-framework</url>
+  </scm>
+
 </project>
