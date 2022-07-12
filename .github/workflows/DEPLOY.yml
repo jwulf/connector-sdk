@@ -38,5 +38,5 @@ jobs:
       # not resolve-able by the Javadoc generator
       - run: mvn -B compile generate-sources source:jar javadoc:jar deploy
         env:
-          MAVEN_USERNAME: ${{ steps.secrets.outputs.ARTIFACTS_USR }}
-          MAVEN_PASSWORD: ${{ steps.secrets.outputs.ARTIFACTS_PSW }}
+          MAVEN_USERNAME: ${{ steps.secrets.outputs.ARTIFACTORY_USR }}
+          MAVEN_PASSWORD: ${{ steps.secrets.outputs.ARTIFACTORY_PSW }}
