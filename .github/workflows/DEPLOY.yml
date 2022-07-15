@@ -10,7 +10,7 @@ jobs:
   deploy-snapshots:
     name: Deploy snapshot artifacts
     runs-on: ubuntu-latest
-    if: github.repository == 'camunda/connector-framework'
+    if: github.repository == 'camunda/connector-sdk'
     concurrency: deploy-snapshots
     steps:
       - uses: actions/checkout@v3
@@ -24,8 +24,8 @@ jobs:
           secretId: ${{ secrets.VAULT_SECRET_ID }}
           exportEnv: false # we rely on step outputs, no need for environment variables
           secrets: |
-            secret/data/common/github.com/actions/camunda/connector-framework ARTIFACTORY_USR;
-            secret/data/common/github.com/actions/camunda/connector-framework ARTIFACTORY_PSW;
+            secret/data/common/github.com/actions/camunda/connector-sdk ARTIFACTORY_USR;
+            secret/data/common/github.com/actions/camunda/connector-sdk ARTIFACTORY_PSW;
       - uses: actions/setup-java@v3.4.0
         with:
           distribution: 'temurin'
