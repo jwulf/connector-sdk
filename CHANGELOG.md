@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to the [Camunda Connector Framework](https://github.com/camunda/connector-framework) are documented here. We use [semantic versioning](http://semver.org/) for releases.
+All notable changes to the [Camunda Connector SDK](https://github.com/camunda/connector-sdk) are documented here. We use [semantic versioning](http://semver.org/) for releases.
 
 
 ## Unreleased
