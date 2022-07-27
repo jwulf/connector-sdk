@@ -9,7 +9,7 @@
 
 ## Create a Connector
 
-Include the [connector core](./core) via maven: 
+Include the [connector core](./core) via maven:
 
 ```xml
 <dependency>
@@ -34,7 +34,7 @@ public class PingConnector implements ConnectorFunction {
     validator.validate();
 
     request.replaceSecrets(context.getSecretStore());
-    
+
     var caller = request.getCaller();
 
     return new PingResponse("Pong to " + caller);
