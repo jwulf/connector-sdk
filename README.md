@@ -13,7 +13,7 @@ Include the [connector core](./core) via maven:
 
 ```xml
 <dependency>
-  <groupId>io.camunda.connectors</groupId>
+  <groupId>io.camunda.connector</groupId>
   <artifactId>connector-core</artifactId>
   <version>0.1.0-SNAPSHOT</version>
 </dependency>
@@ -35,7 +35,7 @@ public class PingConnector implements ConnectorFunction {
 
     request.replaceSecrets(context.getSecretStore());
     
-    var name = request.getCaller();
+    var caller = request.getCaller();
 
     return new PingResponse("Pong to " + caller);
   }
