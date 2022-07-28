@@ -30,8 +30,8 @@ public class PingConnector implements ConnectorFunction {
     var request = context.getVariablesAsType(PingRequest.class);
 
     var validator = new Validator();
-    request.validate(validator);
-    validator.validate();
+    request.validateWith(validator);
+    validator.evaluate();
 
     request.replaceSecrets(context.getSecretStore());
     
