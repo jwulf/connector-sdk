@@ -16,7 +16,13 @@
  */
 package io.camunda.connector.api;
 
-public interface ConnectorFunction {
+public interface ConnectorInput {
 
-  Object execute(ConnectorContext context) throws Exception;
+  default void validateWith(Validator validator) {
+    // don't validate anything
+  }
+
+  default void replaceSecrets(SecretStore secretStore) {
+    // don't replace any secrets
+  }
 }
