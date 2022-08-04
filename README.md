@@ -9,6 +9,8 @@
 
 ## Create a Connector
 
+Head over to our [Connector Template](https://github.com/camunda/connector-template) for a head start. It provides the following setup.
+
 Include the [connector core](./core) via maven:
 
 ```xml
@@ -29,11 +31,8 @@ public class PingConnector implements ConnectorFunction {
 
     var request = context.getVariablesAsType(PingRequest.class);
 
-    var validator = new Validator();
-    request.validateWith(validator);
-    validator.evaluate();
-
-    request.replaceSecrets(context.getSecretStore());
+    context.validate(request);
+    context.replaceSecrets(request);
 
     var caller = request.getCaller();
 
@@ -42,7 +41,7 @@ public class PingConnector implements ConnectorFunction {
 }
 ```
 
-Expose your connector as a [`ConnectorFunction` SPI implementation](https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html).
+Expose your connector as a [`ConnectorFunction` SPI implementation](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ServiceLoader.html).
 
 
 ## Start a Connector
