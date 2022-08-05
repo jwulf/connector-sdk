@@ -57,10 +57,10 @@ mvn clean package
 
 ## Build a release
 
-Checkout the repo and branch to build the release from. Run the release script with the version to release and the next
-development version. The release script requires git and maven to be setup correctly, and that the user has push rights
-to the repository.
+Trigger the [release action](https://github.com/camunda/connector-sdk/actions/workflows/RELEASE.yml) manually with the version `x.y.z` you want to release.
+This can be done on the `main` branch as well as `stable/.x.y` maintenance branches. You can choose the branch to execute the action on as described in the
+[GitHub documentation](https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow).
 
-```bash
-./release.sh 0.3.0 0.4.0
-```
+When triggered from the `main` branch, a maintenance branch `stable/x.y` will be created based on the release version `x.y.z` that you specified.
+
+**Note**: This currently also applies for further classifiers like `x.y.z-rc1` or `x.y.z-alpha1`, i.e. a new branch `stable/x.y` will be created for that release. If the branch to create already exists, the release will fail.
