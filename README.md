@@ -1,4 +1,4 @@
-> [This is a prototype](https://github.com/camunda/cloud-connectors/issues/36#issuecomment-1170444587) and subject to breaking changes. Use at your own risk!
+> This is a preview and subject to breaking changes. Use at your own risk!
 
 # Camunda Connector SDK
 
@@ -20,6 +20,8 @@ Include the [connector core](./core) via maven:
   <version>0.1.0-SNAPSHOT</version>
 </dependency>
 ```
+
+### Create an Outbound Connector
 
 Define your connector logic through the [`ConnectorFunction`](./core/src/main/java/io/camunda/connector/api/ConnectorFunction.java) interface:
 
