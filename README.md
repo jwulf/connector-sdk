@@ -35,7 +35,6 @@ public class PingConnector implements ConnectorFunction {
 
     var request = context.getVariablesAsType(PingRequest.class);
 
-    context.validate(request);
     context.replaceSecrets(request);
 
     var caller = request.getCaller();
@@ -46,7 +45,6 @@ public class PingConnector implements ConnectorFunction {
 ```
 
 Expose your connector as a [`ConnectorFunction` SPI implementation](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ServiceLoader.html).
-
 
 ## Start a Connector
 
