@@ -1,29 +1,37 @@
-> This is a preview and subject to breaking changes. Use at your own risk!
+> This is in developer preview and can be subject to breaking changes.
 
 # Camunda Connector SDK
 
 [![CI](https://github.com/camunda/connector-sdk/actions/workflows/CI.yml/badge.svg)](https://github.com/camunda/connector-sdk/actions/workflows/CI.yml)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.camunda.connector/connector-core/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/io.camunda.connector/connector-core)
+[![Connector Template](https://img.shields.io/badge/template%20repository-use-blue)](https://github.com/camunda/connector-template)
 
+The Connector SDK allows you to [develop custom Camunda 8 Connectors](https://docs.camunda.io/docs/components/integration-framework/introduction-to-connectors/#connectors) in Java.
 
-[Connector Core](#create-a-connector) and [run-times](#start-a-connector).
+You can focus on the logic of the Connector, test it locally, and reuse its runtime logic in multiple environments. The SDK achieves this by abstracting from Camunda Platform 8 internals that usually come with [job workers](https://docs.camunda.io/docs/components/concepts/job-workers/).
 
+Head over to our [**Connector Template**](https://github.com/camunda/connector-template) for a head start.
+
+## Contents
+
+* [Create a Connector](#create-a-connector)
+* [Connector Validation](#connector-validation)
+* [Start a Connector](#start-a-connector)
+* [Build](#build)
+* [Build a release](#build-a-release)
 
 ## Create a Connector
-
-Head over to our [Connector Template](https://github.com/camunda/connector-template) for a head start. It provides the following setup.
 
 Include the [connector core](./core) via maven:
 
 ```xml
+
 <dependency>
   <groupId>io.camunda.connector</groupId>
   <artifactId>connector-core</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0-SNAPSHOT</version>
 </dependency>
 ```
-
-### Create an Outbound Connector
 
 Define your connector logic through the [`ConnectorFunction`](./core/src/main/java/io/camunda/connector/api/ConnectorFunction.java) interface:
 
@@ -46,10 +54,28 @@ public class PingConnector implements ConnectorFunction {
 
 Expose your connector as a [`ConnectorFunction` SPI implementation](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ServiceLoader.html).
 
+### Next steps
+
+* Add [Input validation](#connector-validation) to your Connector
+
+## Connector Validation
+
+If you want to validate your Connector input, the SDK provides a default implementation using [Jakarta Bean Validation](https://beanvalidation.org/) with the [connector-validation](./validation) module. You can include it via maven with the following dependency:
+
+```xml
+
+<dependency>
+  <groupId>io.camunda.connector</groupId>
+  <artifactId>connector-validation</artifactId>
+  <version>0.2.0-SNAPSHOT</version>
+</dependency>
+```
+
+Find more details in the [validation module](./validation).
+
 ## Start a Connector
 
-Spin up your connector as a [job worker](./runtime-job-worker#readme) or build your own run-time, tailored towards your environment.
-
+Spin up your connector as a [job worker](./runtime-job-worker) or build your own run-time, tailored towards your environment.
 
 ## Build
 
