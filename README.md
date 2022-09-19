@@ -33,13 +33,13 @@ Include the [connector core](./core) via maven:
 </dependency>
 ```
 
-Define your connector logic through the [`ConnectorFunction`](./core/src/main/java/io/camunda/connector/api/ConnectorFunction.java) interface:
+Define your connector logic through the [`OutboundConnectorFunction`](./core/src/main/java/io/camunda/connector/api/outbound/OutboundConnectorFunction.java) interface:
 
 ```java
-public class PingConnector implements ConnectorFunction {
+public class PingConnector implements OutboundConnectorFunction {
 
   @Override
-  public Object execute(ConnectorContext context) throws Exception {
+  public Object execute(OutboundConnectorContext context) throws Exception {
 
     var request = context.getVariablesAsType(PingRequest.class);
 
@@ -52,7 +52,7 @@ public class PingConnector implements ConnectorFunction {
 }
 ```
 
-Expose your connector as a [`ConnectorFunction` SPI implementation](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ServiceLoader.html).
+Expose your connector as an [`OutboundConnectorFunction` SPI implementation](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ServiceLoader.html).
 
 ### Next steps
 
