@@ -36,6 +36,12 @@ Include the [connector core](./core) via maven:
 Define your connector logic through the [`OutboundConnectorFunction`](./core/src/main/java/io/camunda/connector/api/outbound/OutboundConnectorFunction.java) interface:
 
 ```java
+
+@OutboundConnector(
+    name = "PING",
+    inputVariables = {"caller"},
+    taskType = "io.camunda.example.PingConnector:1"
+)
 public class PingConnector implements OutboundConnectorFunction {
 
   @Override
