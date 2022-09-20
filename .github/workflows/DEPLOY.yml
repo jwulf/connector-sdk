@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Import Secrets
         id: secrets # important to refer to it in later steps
-        uses: hashicorp/vault-action@v2.4.0
+        uses: hashicorp/vault-action@v2.4.2
         with:
           url: ${{ secrets.VAULT_ADDR }}
           method: approle
