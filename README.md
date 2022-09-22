@@ -40,7 +40,7 @@ Define your connector logic through the [`OutboundConnectorFunction`](./core/src
 @OutboundConnector(
     name = "PING",
     inputVariables = {"caller"},
-    taskType = "io.camunda.example.PingConnector:1"
+    type = "io.camunda.example.PingConnector:1"
 )
 public class PingConnector implements OutboundConnectorFunction {
 
