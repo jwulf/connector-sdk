@@ -145,6 +145,27 @@ jobs:
           git commit -am "ci: set next development version"
           git push --follow-tags
 
+      - name: "Build Changelog"
+        id: changelog
+        uses: Requarks/changelog-action@v1
+        with:
+          token: ${{ github.token }}
+          tag: ${{ github.event.inputs.version }}
+          writeToFile: false
+          excludeTypes: build,docs,other,style,ci
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          body: ${{ steps.changelog.outputs.changes }}
+          tag_name: ${{ github.event.inputs.version }}
+          target_commitish: ${{ needs.prepare.outputs.branch }}
+          files: |
+            **/runtime-job-worker/target/*[0-9].jar
+            **/runtime-job-worker/target/*-rc[0-9].jar
+            **/runtime-job-worker/target/*-alpha[0-9].jar
+            **/THIRD_PARTY_NOTICES
+
   next-version:
     name: Set next version on main branch
     runs-on: ubuntu-latest
