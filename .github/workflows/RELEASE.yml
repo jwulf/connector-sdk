@@ -161,9 +161,6 @@ jobs:
           tag_name: ${{ github.event.inputs.version }}
           target_commitish: ${{ needs.prepare.outputs.branch }}
           files: |
-            **/runtime-job-worker/target/*[0-9].jar
-            **/runtime-job-worker/target/*-rc[0-9].jar
-            **/runtime-job-worker/target/*-alpha[0-9].jar
             **/THIRD_PARTY_NOTICES
 
   next-version:
